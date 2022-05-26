@@ -7,4 +7,6 @@ Packhaus is designed to run Windows applications directly from the container. It
 
 ## How to:
 
-```docker run -it --hostname="$(hostname)" --env="DISPLAY" --volume="${XAUTHORITY:-${HOME}/.Xauthority}:/root/.Xauthority:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:ro" bileyg/docker-wine-pilot /bin/bash
+```bash
+docker run -it --hostname="$(hostname)" --env="DISPLAY" --volume="${XAUTHORITY:-${HOME}/.Xauthority}:/root/.Xauthority:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:ro" bileyg/docker-wine-pilot /bin/bash
+```
