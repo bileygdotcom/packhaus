@@ -53,9 +53,6 @@ RUN wget -nv -O /usr/bin/winetricks https://raw.githubusercontent.com/Winetricks
 # Add dotnet
 RUN winetricks --force -q dotnet462
 
-# Add vcrun2015
-RUN winetricks -q vcrun2015 
-
 # Add Special Ingredients with Winetricks
 RUN winetricks -q d3dcompiler_47 && winetricks -q corefonts
 
@@ -63,7 +60,7 @@ RUN winetricks -q d3dcompiler_47 && winetricks -q corefonts
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-COPY Fonts /root/.wine/drive_c/Windows/Fonts
+COPY Fonts /root/.wine/drive_c/windows/Fonts
 
 #COPY pulse-client.conf /root/pulse/client.conf
 #COPY entrypoint.sh /usr/bin/entrypoint
