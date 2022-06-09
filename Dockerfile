@@ -3,7 +3,7 @@ ARG TAG="20.04"
 FROM ${BASE_IMAGE}:${TAG}
 
 LABEL project="Packhaus"\
-      version="0.4" \
+      version="0.5" \
       mantainer="bileyg"\
       company="Ascon Complex"
 
@@ -62,6 +62,8 @@ RUN winetricks -q d3dcompiler_47 && winetricks -q corefonts
 # Configure locale for unicode
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
+
+COPY Fonts /root/.wine/drive_c/Windows/Fonts
 
 #COPY pulse-client.conf /root/pulse/client.conf
 #COPY entrypoint.sh /usr/bin/entrypoint
