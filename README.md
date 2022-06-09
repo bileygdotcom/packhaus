@@ -11,7 +11,7 @@ https://hub.docker.com/repository/docker/bileyg/packhaus
 ## How to:
 
 ```bash
-docker run -it --hostname="$(hostname)" --env="DISPLAY" --volume="${XAUTHORITY:-${HOME}/.Xauthority}:/root/.Xauthority:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:ro" bileyg/docker-wine-pilot /bin/bash
+docker run -it --hostname="$(hostname)" --env="DISPLAY" --volume="${XAUTHORITY:-${HOME}/.Xauthority}:/root/.Xauthority:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:ro" bileyg/packhaus /bin/bash
 ```
 and then (to test how it works):
 ```bash
