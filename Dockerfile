@@ -2,6 +2,11 @@ ARG BASE_IMAGE="ubuntu"
 ARG TAG="20.04"
 FROM ${BASE_IMAGE}:${TAG}
 
+LABEL project="Packhaus"\
+      version="0.4" \
+      mantainer="bileyg"\
+      company="Ascon Complex"
+
 # Install prerequisites
 RUN apt-get update \
     && DEBIAN_FRONTEND="noninteractive" apt-get install -y --no-install-recommends \
@@ -46,7 +51,10 @@ RUN wget -nv -O /usr/bin/winetricks https://raw.githubusercontent.com/Winetricks
     #&& /root/download_gecko_and_mono.sh "$(wine --version | sed -E 's/^wine-//')"
 
 # Add dotnet
-RUN winetricks --force -q dotnet462    
+RUN winetricks --force -q dotnet462
+
+# Add vcrun2015
+RUN winetricks -q vcrun2015 
 
 # Add Special Ingredients with Winetricks
 RUN winetricks -q d3dcompiler_47 && winetricks -q corefonts
