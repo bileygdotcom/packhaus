@@ -3,7 +3,7 @@ ARG TAG="20.04"
 FROM ${BASE_IMAGE}:${TAG}
 
 LABEL project="Packhaus"\
-      version="0.5" \
+      version="0.6 Dryweight" \
       mantainer="bileyg"\
       company="Ascon Complex"
 
@@ -14,20 +14,20 @@ RUN apt-get update \
         ca-certificates \
         cabextract \
         dbus-x11 \
-        git \
-        gnupg \
-        gosu \
-        gpg-agent \
+        #git \
+        #gnupg \
+        #gosu \
+        #gpg-agent \
         locales \
-        p7zip \
-        sudo \
-        tzdata \
+        #p7zip \
+        #sudo \
+        #tzdata \
         unzip \
         wget \
         winbind \
         x11-xserver-utils \
-        xorgxrdp \
-        xrdp \
+        #xorgxrdp \
+        #xrdp \
         xvfb \
         zenity \
     && rm -rf /var/lib/apt/lists/*
