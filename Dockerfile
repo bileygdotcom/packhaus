@@ -15,9 +15,9 @@ RUN apt-get update \
         cabextract \
         dbus-x11 \
         #git \
-        #gnupg \
+        gnupg \
         #gosu \
-        #gpg-agent \
+        gpg-agent \
         locales \
         #p7zip \
         #sudo \
