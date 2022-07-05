@@ -1,6 +1,6 @@
 ARG BASE_IMAGE="ubuntu"
 ARG TAG="20.04"
-ARG WINE_BRANCH="staging"
+#ARG WINE_BRANCH="staging"
 
 FROM ${BASE_IMAGE}:${TAG}
 
@@ -8,17 +8,6 @@ LABEL project="Packhaus"\
       version="0.7 Dryweight" \
       mantainer="bileyg"\
       company="Ascon Complex"
-
-# add wine repository & winetricks     
-COPY key /usr/share/keyrings
-COPY source /etc/apt/sources.list.d/
-COPY winetricks /usr/bin/
-
-# Add i386 architecture && winetricks execution
-RUN dpkg --add-architecture i386 \
-    && APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1 \
-    && DEBIAN_FRONTEND="noninteractive"
-    && chmod +x /usr/bin/winetricks
 
 # Install prerequisites
 RUN apt-get update \
@@ -36,7 +25,7 @@ RUN apt-get update \
        #sudo \
        #tzdata \
        #unzip \
-       #wget \
+       wget \
        winbind \
        x11-xserver-utils \
        #xorgxrdp \
@@ -45,8 +34,20 @@ RUN apt-get update \
        zenity \
     && rm -rf /var/lib/apt/lists/*
     
+# add wine repository & winetricks     
+COPY keys /usr/share/keyrings/
+COPY source /etc/apt/sources.list.d/
+COPY winetricks /usr/bin/
+
+# Add i386 architecture && winetricks execution
+RUN dpkg --add-architecture i386 \
+    && APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1 \
+    && DEBIAN_FRONTEND="noninteractive" \
+    && chmod +x /usr/bin/winetricks
+    
 # Install wine
-RUN apt-get install -y --install-recommends winehq-${WINE_BRANCH} \
+RUN apt-get update \
+    && apt-get install -y --install-recommends winehq-staging \
     && rm -rf /var/lib/apt/lists/*
 
 # Install wine old
