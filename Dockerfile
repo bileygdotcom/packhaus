@@ -5,7 +5,7 @@ ARG TAG="20.04"
 FROM ${BASE_IMAGE}:${TAG}
 
 LABEL project="Packhaus"\
-      version="0.7 Dryweight" \
+      version="0.8 dotnet472" \
       mantainer="bileyg"\
       company="Ascon Complex"
 
@@ -69,7 +69,7 @@ RUN apt-get update \
     #&& /root/download_gecko_and_mono.sh "$(wine --version | sed -E 's/^wine-//')"
 
 # Add dotnet
-RUN winetricks --force -q dotnet462
+RUN winetricks --force -q dotnet472
 
 # Add Special Ingredients with Winetricks
 RUN winetricks -q d3dcompiler_47 && winetricks -q corefonts
