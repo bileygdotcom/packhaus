@@ -5,7 +5,7 @@ ARG TAG="20.04"
 FROM ${BASE_IMAGE}:${TAG}
 
 LABEL project="Packhaus"\
-      version="0.8 dotnet472" \
+      version="0.9 wine 8.0.1" \
       mantainer="bileyg"\
       company="Ascon Complex"
 
@@ -23,7 +23,7 @@ RUN apt-get update \
        locales \
        #p7zip \
        #sudo \
-       #tzdata \
+       tzdata \
        #unzip \
        wget \
        winbind \
@@ -47,7 +47,7 @@ RUN dpkg --add-architecture i386 \
     
 # Install wine
 RUN apt-get update \
-    && apt-get install -y --install-recommends winehq-staging \
+    && apt-get install -y --install-recommends winehq-stable \
     && rm -rf /var/lib/apt/lists/*
 
 # Install wine old
