@@ -10,7 +10,7 @@ ENV LANG en_US.UTF-8
 FROM ${BASE_IMAGE}:${TAG}
 
 LABEL project="Packhaus"\
-      version="1.0 wine 8.5.0" \
+      version="1.0.0 wine 8.5.0" \
       mantainer="bileyg"\
       company="Ascon"
 
